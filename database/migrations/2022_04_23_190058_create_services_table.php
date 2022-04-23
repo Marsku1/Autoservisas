@@ -14,11 +14,36 @@ return new class extends Migration
     public function up()
     {
         Schema::create('services', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('miestas');
             $table->string('pavadinimas');
             $table->string('gatve');
+
         });
+
+        DB::table('services')->insert(
+            array(
+                'miestas' => 'Kaunas',
+                'pavadinimas' => 'Kauno autoservisas',
+                'gatve' => 'Kauno g. 1'
+            )
+        );
+
+        DB::table('services')->insert(
+            array(
+                'miestas' => 'Vilnius',
+                'pavadinimas' => 'Vilniaus autoservisas',
+                'gatve' => 'Vilniaus g. 2'
+            )
+        );
+
+        DB::table('services')->insert(
+            array(
+                'miestas' => 'Klaipėda',
+                'pavadinimas' => 'Klaipėdos autoservisas',
+                'gatve' => 'Klapėdos g. 3'
+            )
+        );
     }
 
     /**

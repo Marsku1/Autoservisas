@@ -14,11 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->date('apsilankymo_data');
-            $table->enum('data', ['priimtas', 'vykdomas', 'uzbaigtas', 'atsauktas']);
-            $table->unsignedBigInteger('autoserviso_id');
-            $table->foreign('autoserviso_id')->references('id')->on('services');
+            $table->enum('busena', ['priimtas', 'vykdomas', 'užbaigtas', 'atšauktas']);
+            $table->string('gedimo_aprasymas');
+            $table->unsignedInteger('autoserviso_id');
+            $table->foreign('autoserviso_id')->references('id')->on('services')->onDelete('cascade');
             $table->string('marke');
             $table->string('valstybinis_numeris');
             $table->integer('rida');

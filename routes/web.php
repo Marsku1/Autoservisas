@@ -27,7 +27,7 @@ Route::post("/CarProfileViews/create", [CarProfilesController::class,'store'])->
 Route::get("/CarProfileViews/{id}/edit", [CarProfilesController::class,'edit'])->name('CarProfileViews/edit');
 Route::post("/CarProfileViews/{id}/edit", [CarProfilesController::class,'update'])->name('CarProfileViews/edit');
 Route::get("/CarProfileViews/{id}", [CarProfilesController::class,'show'])->name('CarProfileViews/show');
-Route::get("/CarProfileViews/{id}/delete", [CarProfilesController::class,'destroy'])->name('CarProfileViews.delete');
+Route::delete("/CarProfileViews/{id}", [CarProfilesController::class,'destroy'])->name('CarProfileViews/destroy');
 
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');

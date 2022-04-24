@@ -45,8 +45,7 @@
                                             <a href="{{ url('/CarProfileViews/' . $item->id) }}" title="View Car Profile"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/CarProfileViews/' . $item->id . '/edit') }}" title="Edit Car Profile"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
-                                            <form method="POST" action="{{ url('/CarProfileViews' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
+                                            <form method="POST" action="{{ route('/CarProfileViews' . '/' . $item->id . '/delete') }}" accept-charset="UTF-8" style="display:inline">      
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Car Profile" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>

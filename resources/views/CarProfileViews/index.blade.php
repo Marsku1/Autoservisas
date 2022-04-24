@@ -2,16 +2,12 @@
 @section('content')
     <div class="container">
         <div class="row">
+
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
                         <h2>My vehicles</h2>
                     </div>
-                    @if(\Session::has('success'))
-                        <div class="alert alert-success">
-                            <p>{{ \Session::get('success') }}</p>
-                        </div>
-                    @endif
                     <div class="card-body">
                         <a href="{{ url('CarProfileViews/create') }}" class="btn btn-success btn-sm" title="Add New Car">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New Car
@@ -50,7 +46,6 @@
                                                 {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Delete Car Profile" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                                             </form>
-
                                         </td>
                                     </tr>
                                 @endforeach

@@ -36,36 +36,38 @@
                 @endforeach
                 </ul>
         @endif
-        <form method="post" action="{{action('ItemController@update', $id)}}" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
         {{csrf_field()}}
-        <input type="hidden" name="_method" value="PATCH" />
+        <input type="hidden" name="_method" value="POST" />
         <div class="form-group">
-            <input type="text" name="pavadinimas" class="form-control" value="{{$item->pavadinimas}}" placeholder="Pavadinimas" />
+            <input type="date" name="apsilankymo_data" class="form-control" value="{{$order->apsilankymo_data}}" placeholder="Apsilankymo data" />
         </div>
+        <br />
         <div class="form-group">
-            <input type="text" name="trumpas_aprasymas" class="form-control" value="{{$item->trumpas_aprasymas}}" placeholder="Trumpas aprašymas" />
+            <input type="text" name="gedimo_aprasymas" class="form-control" value="{{$order->gedimo_aprasymas}}" placeholder="Gedimo aprašymas" />
         </div>
+        <br />
         <div class="form-group">
-            <input type="text" name="ilgas_aprasymas" class="form-control" value="{{$item->ilgas_aprasymas}}" placeholder="Ilgas aprašymas" />
+            <input type="text" name="marke" class="form-control" value="{{$order->marke}}" placeholder="Automobilio markė" />
         </div>
+        <br />
         <div class="form-group">
-            <label for="bukle">Būklė:</label>
-            <select id="bukle" name="bukle">
-                <option>{{$item->bukle}}</option>
-                <option>Kaip naujas</option>
-                <option>Puiki</option>
-                <option>Gera</option>
-                <option>Patenkinama</option>
-                <option>Bloga</option>
-            </select>
+            <input type="text" name="valstybinis_numeris" class="form-control" value="{{$order->valstybinis_numeris}}" placeholder="Automobilio valstybinis numeris" />
         </div>
+        <br />
         <div class="form-group">
-            <input type="text" name="pristatymas" class="form-control" value="{{$item->pristatymas}}" placeholder="Pristatymas" />
+            <input type="number" name="rida" class="form-control" value="{{$order->rida}}" placeholder="Automobilio rida" />
         </div>
+        <br />
         <div class="form-group">
-            <label for="file">Nuotrauka:</label>
-            <input type="file" name="file" id="file" class="form-control" value="{{$item->nuotrauka}}"/>
+        <label for="autoserviso_id">Autoservisas</label>
+        <select class="form-control" name="autoserviso_id">
+        @foreach($services as $service)
+            <option value="{{$service->id}}">{{$service->pavadinimas}}</option>
+        @endforeach
+        </select>
         </div>
+        <br />
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Patvirtinti" />
         </div>

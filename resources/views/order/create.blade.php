@@ -25,6 +25,15 @@
     <br />
     <form method="post" enctype="multipart/form-data">
     {{csrf_field()}}
+    @if(count($errors) > 0)
+    <div class="alert alert-danger">
+        <ul>
+        @foreach($errors->all() as $error)
+            <li>{{$error}}</li>
+        @endforeach
+        </ul>
+    </div>
+    @endif
     <div class="form-group">
     <label for="data">Data</label>
         <input type="date" name="apsilankymo_data" class="form-control"/>
@@ -62,7 +71,7 @@
     <br />
 
     <div class="form-group">
-    <input type="text" name="rida" class="form-control" placeholder="Automobilio rida" />
+    <input type="number" name="rida" class="form-control" placeholder="Automobilio rida" />
     </div>
 
     <br />

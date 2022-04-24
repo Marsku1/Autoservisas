@@ -31,6 +31,11 @@ $url .= "/edit";
     </style>
 
 @section('content')
+@if(\Session::has('success'))
+<div class="alert alert-success">
+    <p>{{ \Session::get('success') }}</p>
+</div>
+@endif
 </br>
     <div class="flex-container">
         <div class="flex-child">

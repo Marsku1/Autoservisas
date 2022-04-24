@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CarProfilesController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ServiceController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -31,11 +32,15 @@ Route::delete("/CarProfileViews/{id}", [CarProfilesController::class,'destroy'])
 
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
-Route::get('/order/create', [OrderController::class, 'createform']);
+Route::get('/order/create', [OrderController::class, 'createform'])->name('createform');
 Route::post('/order/create', [OrderController::class, 'create']);
 Route::get('/order/{id}/cancel', [OrderController::class, 'cancel']);
 Route::get('/order/{id}/edit', [OrderController::class, 'edit']);
 Route::post('/order/{id}/edit', [OrderController::class, 'update']);
 Route::get('/order/{id}', [OrderController::class, 'show'])->name('order');
 
+Route::get("/services", [ServiceController::class,'index'])->name('services');
+Route::delete("/service/{id}", [ServiceController::class,'destroy']);
+Route::get("/service/{id}/edit", [ServiceController::class,'edit']);
+Route::post("/service/{id}/edit", [ServiceController::class,'update']);
 

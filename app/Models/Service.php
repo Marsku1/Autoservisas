@@ -7,5 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Service extends Model
 {
-    use HasFactory;
+    public $timestamps = false;
+    protected $table = 'services';
+    protected $primaryKey = 'id';
+    protected $fillable = ['miestas', 'pavadinimas', 'gatve'];
 }

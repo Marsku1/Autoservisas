@@ -62,7 +62,7 @@ class OrderController extends Controller
             $order->busena = 'atšauktas';
             $order->save();
         }
-        return redirect()->route('home');
+        return redirect()->route('createform');
     }
 
     public function edit(Request $request)

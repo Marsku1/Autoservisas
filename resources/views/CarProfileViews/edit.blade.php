@@ -5,9 +5,8 @@
         <div class="card-header">Contactus Page</div>
         <div class="card-body">
 
-            <form action="{{ url('CarProfileViews/' .$carProfiles->id) }}" method="post">
+            <form action="{{ url('CarProfileViews/' .$carProfiles->id .'/edit') }}" method="post">
                 {!! csrf_field() !!}
-                @method("PATCH")
                 <input type="hidden" name="id" id="id" value="{{$carProfiles->id}}" id="id" />
                 <label>Make</label></br>
                 <input type="text" name="make" id="make" value="{{$carProfiles->make}}" class="form-control"></br>

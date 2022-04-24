@@ -36,7 +36,7 @@ class CarProfilesController extends Controller
     {
         $input = $request->all();
         CarProfile::create($input);
-        return redirect('carProfile')->with('flash_message','Car profile added!');
+        return redirect('CarProfileViews')->with('success','Car profile added!');
     }
 
     /**
@@ -48,7 +48,7 @@ class CarProfilesController extends Controller
     public function show($id)
     {
         $carProfile = CarProfile::find($id);
-        return view('carProfiles.show')->with('carProfiles', $carProfile);
+        return view('CarProfileViews.show')->with('carProfiles', $carProfile);
     }
 
     /**
@@ -60,7 +60,7 @@ class CarProfilesController extends Controller
     public function edit($id)
     {
         $carProfile = CarProfile::find($id);
-        return view('carProfiles.edit')->with('carProfiles', $carProfile);
+        return view('CarProfileViews.edit')->with('carProfiles', $carProfile);
     }
 
     /**
@@ -75,7 +75,7 @@ class CarProfilesController extends Controller
         $carProfile = CarProfile::find($id);
         $input = $request->all();
         $carProfile->update($input);
-        return redirect('carProfile')->with('flash_message', 'Car profile updated!');
+        return redirect('CarProfileViews')->with('flash_message', 'Car profile updated!');
     }
 
     /**
@@ -87,6 +87,6 @@ class CarProfilesController extends Controller
     public function destroy($id)
     {
         CarProfile::destroy($id);
-        return redirect('carProfile')->with('flash_message', 'Car profile deleted!');
+        return redirect('CarProfileViews')->with('flash_message', 'Car profile deleted!');
     }
 }

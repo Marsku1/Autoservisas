@@ -5,7 +5,8 @@
         <div class="card-header">Car Profiles Page</div>
         <div class="card-body">
 
-            <form action="CarProfileViews" method="post">
+            <form  method="post" enctype="multipart/form-data">
+            {{csrf_field()}}       
                 <label>Make</label></br>
                 <input type="text" name="make" id="make" class="form-control"></br>
                 <label>Model</label></br>

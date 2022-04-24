@@ -75,7 +75,7 @@ class CarProfilesController extends Controller
         $carProfile = CarProfile::find($id);
         $input = $request->all();
         $carProfile->update($input);
-        return redirect('CarProfileViews')->with('flash_message', 'Car profile updated!');
+        return redirect('CarProfileViews')->with('success', 'Car profile updated!');
     }
 
     /**
@@ -87,6 +87,6 @@ class CarProfilesController extends Controller
     public function destroy($id)
     {
         CarProfile::destroy($id);
-        return redirect('CarProfileViews')->with('flash_message', 'Car profile deleted!');
+        return redirect('CarProfileViews')->with('success', 'Car profile deleted!');
     }
 }

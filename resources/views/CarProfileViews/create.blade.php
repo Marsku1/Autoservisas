@@ -6,7 +6,7 @@
         <div class="card-body">
 
             <form  method="post" enctype="multipart/form-data">
-            {{csrf_field()}}       
+                {{csrf_field()}}
                 <label>Make</label></br>
                 <input type="text" name="make" id="make" class="form-control"></br>
                 <label>Model</label></br>

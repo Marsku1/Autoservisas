@@ -21,12 +21,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get("/CarProfileViews", [CarProfilesController::class,'index'])->name('CarProfileViews');
 Route::get("/CarProfileViews/create", [CarProfilesController::class,'create'])->name('CarProfileViews/create');
 Route::post("/CarProfileViews/create", [CarProfilesController::class,'store'])->name('CarProfileViews/create');
-Route::get("/CarProfileViews", [CarProfilesController::class,'index'])->name('CarProfileViews');
-Route::get("/CarProfileViews/edit", [CarProfilesController::class,'edit'])->name('CarProfileViews/edit');
-Route::get("/CarProfileViews/show", [CarProfilesController::class,'show'])->name('CarProfileViews/show');
+Route::get("/CarProfileViews/{id}/edit", [CarProfilesController::class,'edit'])->name('CarProfileViews/edit');
+Route::post("/CarProfileViews/{id}/edit", [CarProfilesController::class,'update'])->name('CarProfileViews/edit');
+Route::get("/CarProfileViews/{id}", [CarProfilesController::class,'show'])->name('CarProfileViews/show');
+Route::get("/CarProfileViews/{id}", [CarProfilesController::class,'destroy'])->name('CarProfileViews');
+
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
 Route::get('/order/create', [OrderController::class, 'createform']);

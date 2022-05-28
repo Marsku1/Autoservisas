@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Order;
 use App\Models\Service;
-use DB;
 use Auth;
+use DB;
 
 class OrderController extends Controller
 {
@@ -99,6 +100,14 @@ class OrderController extends Controller
         return view('order.edit', compact('order', 'id', 'services')); 
     }
 
+    public function edit_state(Request $request)
+    {
+        $id = $request->id;
+        $order = Order::find($id);
+        $services = Service::all(['id'], 'pavadinimas');
+        return view('order.edit_state', compact('order', 'id', 'services'));
+    }
+
     public function update(Request $request)
     {
         $id = $request->id;
@@ -121,5 +130,48 @@ class OrderController extends Controller
         $order->update();
         
         return redirect()->route('order', [$id])->with('success', 'Užsakymas redaguotas');
+    }
+
+    public function update_state(Request $request)
+    {
+        $id = $request->id;
+        $order = Order::find($id);
+        $this->validate($request, [
+            'busena'       =>  'required',
+            'message'      =>  'required'
+        ]);
+
+        $state = $request->get('busena');
+        $order->busena = $state;
+        $message = $request->get('message'); 
+        $order->update();
+
+        $client_id = $order->kliento_id;
+        $client_email = DB::Table('users')->where('id', $client_id)->value('email');
+
+        if ($state == 'užbaigtas')
+        {
+            $mailData = [
+                'title' => 'Sveiki, Jūsų automobilis paruoštas!',
+                'body' => $message
+            ];      
+        }   else if ($state == 'vykdomas') {
+            $mailData = [
+                'title' => 'Sveiki, Jūsų automobilio tvarkymas pradėtas!',
+                'body' => $message
+            ];      
+        } else if ($state = 'atšauktas') {
+            $mailData = [
+                'title' => 'Sveiki, Jūsų automobilio tvarkymas atšauktas.',
+                'body' => $message
+            ];     
+        }
+        
+        if ($state != 'priimtas')
+        {
+            Mail::to($client_email)->send(new \App\Mail\Mail($mailData));
+        }
+        
+        return redirect()->route('order', [$id])->with('success', 'State changed successfuly');
     }
 }

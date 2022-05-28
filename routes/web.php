@@ -42,6 +42,10 @@ Route::post('/order/create', [OrderController::class, 'create']);
 Route::get('/order/{id}/cancel', [OrderController::class, 'cancel']);
 Route::get('/order/{id}/edit', [OrderController::class, 'edit']);
 Route::post('/order/{id}/edit', [OrderController::class, 'update']);
+
+Route::get('/order/{id}/edit_state', [OrderController::class, 'edit_state']);
+Route::post('/order/{id}/edit_state', [OrderController::class, 'update_state']);
+
 Route::get('/order/{id}', [OrderController::class, 'show'])->name('order');
 
 Route::get("/services", [ServiceController::class,'index'])->name('services');

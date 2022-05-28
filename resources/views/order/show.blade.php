@@ -71,6 +71,7 @@ $url .= "/edit";
             </div>
         </div>
     </div>
+    @if($order->busena == 'priimtas' && Auth::user()->role == 'user')
     <div class="button">
         <button style="margin-left:20px" onclick="location.href='{{ url($url) }}'">Redaguoti</button>
         <form method="post" class="cancel_form" action="/order/{{$order->id}}/cancel">
@@ -79,6 +80,7 @@ $url .= "/edit";
             <button style="margin-left:20px; margin-top:10px" type="submit" class="btn btn-danger">Atšaukti</button>
         </form>
     </div>
+    @endif
     <script>
     $(document).ready(function(){
     $('.cancel_form').on('submit', function(){

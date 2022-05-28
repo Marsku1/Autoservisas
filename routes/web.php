@@ -44,3 +44,8 @@ Route::delete("/service/{id}", [ServiceController::class,'destroy']);
 Route::get("/service/{id}/edit", [ServiceController::class,'edit']);
 Route::post("/service/{id}/edit", [ServiceController::class,'update']);
 
+Route::get("/UserList", [\App\Http\Controllers\UserListController::class,'index'])->name('UserList');
+Route::delete("/UserList/{id}", [\App\Http\Controllers\UserListController::class,'destroy']);
+Route::get("/UserList/{id}/edit", [\App\Http\Controllers\UserListController::class,'edit']);
+Route::post("/UserList/{id}/edit", [\App\Http\Controllers\UserListController::class,'update']);
+

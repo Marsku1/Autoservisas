@@ -18,8 +18,26 @@ class OrderController extends Controller
 
     public function user_orders()
     {
-        $orders = Order::where('kliento_id', Auth::id())->where('busena', '!=', "atšauktas") ->get();
+        $orders = Order::where('kliento_id', Auth::id())->get();
         return view('order.user_orders', compact('orders'));
+    }
+
+    public function report()
+    {
+        $orders = Order::all()->toArray();
+        return view('order.report', compact('orders'));
+    }
+
+    public function search(Request $request)
+    {   
+        $fromDate = $request->input('fromDate');
+        $toDate = $request->input('toDate');
+
+        $orders = Order::where('apsilankymo_data', '>=', $fromDate)
+        ->where('apsilankymo_data', '<=', $toDate)
+        ->get();
+
+        return view('order.report', compact('orders'));
     }
 
     public function createform()

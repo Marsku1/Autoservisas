@@ -60,9 +60,16 @@
                                     {{ Auth::user()->name }}
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                    @if (Auth::user()->role == 'user')
                                     <a class="dropdown-item" href="{{ route('CarProfileViews') }}">
                                         My vehicles
                                     </a>
+                                    @endif
+                                    @if (Auth::user()->role == 'user')
+                                    <a class="dropdown-item" href="{{ route('user_orders') }}">
+                                        My orders
+                                    </a>
+                                    @endif
                                     @if (Auth::user()->role == 'admin')
                                     <a class="dropdown-item" href="{{ route('services') }}">
                                         Services

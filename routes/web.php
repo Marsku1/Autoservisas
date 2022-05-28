@@ -32,6 +32,7 @@ Route::delete("/CarProfileViews/{id}", [CarProfilesController::class,'destroy'])
 
 
 Route::get('/orders', [OrderController::class, 'index'])->name('orders');
+Route::get('/user_orders', [OrderController::class, 'user_orders'])->name('user_orders');
 Route::get('/order/create', [OrderController::class, 'createform'])->name('createform');
 Route::post('/order/create', [OrderController::class, 'create']);
 Route::get('/order/{id}/cancel', [OrderController::class, 'cancel']);

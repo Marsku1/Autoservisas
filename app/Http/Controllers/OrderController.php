@@ -6,13 +6,20 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\Service;
 use DB;
+use Auth;
 
 class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::all()->toArray();
+        $orders = Order::where('busena', '!=', "atšauktas")->get();
         return view('order.list', compact('orders'));
+    }
+
+    public function user_orders()
+    {
+        $orders = Order::where('kliento_id', Auth::id())->where('busena', '!=', "atšauktas") ->get();
+        return view('order.user_orders', compact('orders'));
     }
 
     public function createform()
@@ -39,9 +46,10 @@ class OrderController extends Controller
         $marke = $request->input('marke');
         $valstybinis_numeris = strtoupper($request->input('valstybinis_numeris'));
         $rida = $request->input('rida');
+        $kliento_id = Auth::id();
 
         $data=array('apsilankymo_data'=>$apsilankymo_data,'busena'=>$busena,'gedimo_aprasymas'=>$gedimo_aprasymas,'autoserviso_id'=>$autoserviso_id,
-        'marke'=>$marke,'valstybinis_numeris'=>$valstybinis_numeris,'rida'=>$rida);
+        'marke'=>$marke,'valstybinis_numeris'=>$valstybinis_numeris,'rida'=>$rida, 'kliento_id'=>$kliento_id);
 
         $id = DB::table('orders')->insertGetId($data);
         

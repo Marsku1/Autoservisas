@@ -6,10 +6,12 @@
             <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">
-                        <h2>Orders</h2>
+                        <h2>My orders</h2>
                     </div>
                     <div class="card-body">
-
+                        <a href="{{ url('/order/create') }}" class="btn btn-success btn-sm" title="Add New Car">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Add New Order
+                        </a>
                         <br/>
                         <br/>
                         <div class="table-responsive">

@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id();
             $table->date('apsilankymo_data');
             $table->enum('busena', ['priimtas', 'vykdomas', 'užbaigtas', 'atšauktas']);
             $table->string('gedimo_aprasymas');
@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('marke');
             $table->string('valstybinis_numeris');
             $table->integer('rida');
+            $table->unsignedBigInteger('kliento_id');
+            $table->foreign('kliento_id')->references('id')->on('users');
         });
     }
 

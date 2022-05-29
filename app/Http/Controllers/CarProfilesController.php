@@ -34,6 +34,14 @@ class CarProfilesController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, [
+            'make'          =>  'required',
+            'model'         =>  'required',
+            'fuel_type'     =>  'required',
+            'year'          =>  'required',
+            'number_plate'  =>  'required'
+        ]);
+        
         $input = $request->all();
         CarProfile::create($input);
         return redirect('CarProfileViews')->with('success','Car profile added!');
@@ -72,6 +80,14 @@ class CarProfilesController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $this->validate($request, [
+            'make'          =>  'required',
+            'model'         =>  'required',
+            'fuel_type'     =>  'required',
+            'year'          =>  'required',
+            'number_plate'  =>  'required'
+        ]);
+
         $carProfile = CarProfile::find($id);
         $input = $request->all();
         $carProfile->update($input);

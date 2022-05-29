@@ -7,6 +7,15 @@
 
             <form  method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
+                @if(count($errors) > 0)
+                <div class="alert alert-danger">
+                    <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                    </ul>
+                </div>
+                @endif
                 <label>Make</label></br>
                 <input type="text" name="make" id="make" class="form-control"></br>
                 <label>Model</label></br>

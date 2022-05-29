@@ -1,12 +1,16 @@
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
 <style>
         .disabled {
             pointer-events: none;
         }
         th {
-            text-align:center;           
+            text-align:center;
         }
         tr {
-            text-align:center;         
+            text-align:center;
         }
         tr:hover {
             background-color: #D3D3D3;
@@ -21,7 +25,7 @@
 
     <div class="col-md-12">
     <br />
-    <h3 aling="center">Užsakymo kūrimas</h3>
+    <h3 >Užsakymo kūrimas</h3>
     <br />
     <form method="post" enctype="multipart/form-data">
     {{csrf_field()}}
@@ -78,13 +82,14 @@
 
     <div class="form-group">
     <input type="submit" class="btn btn-primary" value="Sukurti" />
+
    </div>
 
   </form>
  </div>
 </div>
 </div>
- 
+
 </body>
 </html>
 @endsection
